@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDPlusPlus_Builder_Version_1.0.0>
+  <top>
+    <components> Room&#xd;</components>
+    <components> Hall&#xd;</components>
+    <components> door1@DoorController door2@DoorController&#xd;</components>
+    <comment> Generators for the room&#xd;</comment>
+    <components> pedestrianRoom1@Generator pedestrianRoom2@Generator&#xd;</components>
+    <components> pedestrianRoom3@Generator pedestrianRoom4@Generator&#xd;</components>
+    <components> pedestrianRoom5@Generator pedestrianRoom6@Generator&#xd;</components>
+    <components> pedestrianRoom7@Generator pedestrianRoom8@Generator&#xd;</components>
+    <components> pedestrianRoom9@Generator pedestrianRoom10@Generator&#xd;</components>
+    <comment> Generators for the hall&#xd;</comment>
+    <components> pedestrianHall1@Generator pedestrianHall2@Generator&#xd;</components>
+    <components> pedestrianHall3@Generator pedestrianHall4@Generator&#xd;</components>
+    <components> pedestrianHall5@Generator pedestrianHall6@Generator&#xd;</components>
+    <comment> Link the pedestrians to the entrance of the room&#xd;</comment>
+    <link> out@pedestrianRoom1 entranceRoom1@Room&#xd;</link>
+    <link> out@pedestrianRoom2 entranceRoom2@Room&#xd;</link>
+    <link> out@pedestrianRoom3 entranceRoom3@Room&#xd;</link>
+    <link> out@pedestrianRoom4 entranceRoom4@Room&#xd;</link>
+    <link> out@pedestrianRoom5 entranceRoom5@Room&#xd;</link>
+    <link> out@pedestrianRoom6 entranceRoom6@Room&#xd;</link>
+    <link> out@pedestrianRoom7 entranceRoom7@Room&#xd;</link>
+    <link> out@pedestrianRoom8 entranceRoom8@Room&#xd;</link>
+    <link> out@pedestrianRoom9 entranceRoom9@Room&#xd;</link>
+    <link> out@pedestrianRoom10 entranceRoom10@Room&#xd;</link>
+    <comment> link the pedestrians to the entrance of the hall&#xd;</comment>
+    <link> out@pedestrianHall1 entranceHall1@Hall&#xd;</link>
+    <link> out@pedestrianHall2 entranceHall2@Hall&#xd;</link>
+    <link> out@pedestrianHall3 entranceHall3@Hall&#xd;</link>
+    <link> out@pedestrianHall4 entranceHall4@Hall&#xd;</link>
+    <link> out@pedestrianHall5 entranceHall5@Hall&#xd;</link>
+    <link> out@pedestrianHall6 entranceHall6@Hall&#xd;</link>
+    <comment> Link the hallway to the room&#xd;</comment>
+    <link> exitHallDoor1@Hall inHall@door1&#xd;</link>
+    <link> outHall@door1 entranceRoomDoor1@Room&#xd;</link>
+    <link> exitHallDoor2@Hall inHall@door2&#xd;</link>
+    <link> outHall@door2 entranceRoomDoor2@Room&#xd;</link>
+    <comment> Link the room to the hallway&#xd;</comment>
+    <link> exitRoomDoor1@Room inRoom@door1&#xd;</link>
+    <link> outRoom@door1 entranceHallDoor1@Hall&#xd;</link>
+    <link> exitRoomDoor2@Room inRoom@door2&#xd;</link>
+    <link> outRoom@door2 entranceHallDoor2@Hall&#xd;</link>
+  </top>
+  <Hall>
+    <type> cell&#xd;</type>
+    <width> 6&#xd;</width>
+    <height> 10&#xd;</height>
+    <delay> transport&#xd;</delay>
+    <defaultDelayTime> 400&#xd;</defaultDelayTime>
+    <border> nonwrapped&#xd;</border>
+    <neighbors> 				Hall(2,-1)  Hall(2,0)  Hall(2,1)&#xd;</neighbors>
+    <neighbors> 				Hall(1,-1)  Hall(1,0)  Hall(1,1)&#xd;</neighbors>
+    <neighbors> 	 Hall(0,-2) Hall(0,-1)  Hall(0,0)  Hall(0,1) Hall(0,2)&#xd;</neighbors>
+    <neighbors> 				Hall(-1,-1) Hall(-1,0) Hall(-1,1)&#xd;</neighbors>
+    <neighbors> 				Hall(-2,-1) Hall(-2,0) Hall(-2,1)&#xd;</neighbors>
+    <comment>%%% state values %%%%&#xd;</comment>
+    <comment> 0 - cell unoccupied&#xd;</comment>
+    <comment> 1 - cell occupied with an up walker&#xd;</comment>
+    <comment> 2 - cell occupied with a down walker&#xd;</comment>
+    <comment> 3 - cell occupied with an obstacle&#xd;</comment>
+    <initialvalue> 0&#xd;</initialvalue>
+    <comment>initialrowvalue : 0 010001&#xd;</comment>
+    <comment>initialrowvalue : 1 001000&#xd;</comment>
+    <localtransition> PedestrianBehaviour&#xd;</localtransition>
+    <in> entranceHall1 entranceHall2&#xd;</in>
+    <in> entranceHall3 entranceHall4&#xd;</in>
+    <in> entranceHall5 entranceHall6&#xd;</in>
+    <link> entranceHall1 entranceHall1@Hall(9,0)&#xd;</link>
+    <link> entranceHall2 entranceHall2@Hall(9,1)&#xd;</link>
+    <link> entranceHall3 entranceHall3@Hall(9,2)&#xd;</link>
+    <link> entranceHall4 entranceHall4@Hall(9,3)&#xd;</link>
+    <link> entranceHall5 entranceHall5@Hall(9,4)&#xd;</link>
+    <link> entranceHall6 entranceHall6@Hall(9,5)&#xd;</link>
+    <in> entranceHallDoor1 entranceHallDoor2&#xd;</in>
+    <link> entranceHallDoor1 entranceHallDoor1@Hall(0,2)&#xd;</link>
+    <link> entranceHallDoor2 entranceHallDoor2@Hall(0,3)&#xd;</link>
+    <out> exitHallDoor1 exitHallDoor2&#xd;</out>
+    <link> exitHallDoor1@Hall(0,2) exitHallDoor1 &#xd;</link>
+    <link> exitHallDoor2@Hall(0,3) exitHallDoor2 &#xd;</link>
+    <zone> hall-boundary-rules { (0,0)..(0,5) }&#xd;</zone>
+    <portInTransition> entranceHall1@Hall(9,0) hall-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceHall2@Hall(9,1) hall-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceHall3@Hall(9,2) hall-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceHall4@Hall(9,3) hall-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceHall5@Hall(9,4) hall-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceHall6@Hall(9,5) hall-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceHallDoor1@Hall(0,2) door-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceHallDoor2@Hall(0,3) door-entrance-rule&#xd;</portInTransition>
+  </Hall>
+  <Room>
+    <type> cell&#xd;</type>
+    <width> 10&#xd;</width>
+    <height> 10&#xd;</height>
+    <delay> transport&#xd;</delay>
+    <defaultDelayTime> 400&#xd;</defaultDelayTime>
+    <border> nonwrapped&#xd;</border>
+    <neighbors> 				Room(2,-1)  Room(2,0)  Room(2,1)&#xd;</neighbors>
+    <neighbors> 				Room(1,-1)  Room(1,0)  Room(1,1)&#xd;</neighbors>
+    <neighbors> 	 Room(0,-2) Room(0,-1)  Room(0,0)  Room(0,1) Room(0,2)&#xd;</neighbors>
+    <neighbors> 				Room(-1,-1) Room(-1,0) Room(-1,1)&#xd;</neighbors>
+    <neighbors> 				Room(-2,-1) Room(-2,0) Room(-2,1)&#xd;</neighbors>
+    <comment>%%% state values %%%%&#xd;</comment>
+    <comment> 0 - cell unoccupied&#xd;</comment>
+    <comment> 1 - cell occupied with an up walker&#xd;</comment>
+    <comment> 2 - cell occupied with a down walker&#xd;</comment>
+    <comment> 3 - cell occupied with an obstacle&#xd;</comment>
+    <initialvalue> 0&#xd;</initialvalue>
+    <comment> add obstacles to room&#xd;</comment>
+    <initialrowvalue> 5 0030000300&#xd;</initialrowvalue>
+    <comment>initialrowvalue : 8 0000002000&#xd;</comment>
+    <comment>initialrowvalue : 9 0202000200&#xd;</comment>
+    <localtransition> PedestrianBehaviour&#xd;</localtransition>
+    <in> entranceRoom1 entranceRoom2&#xd;</in>
+    <in> entranceRoom3 entranceRoom4&#xd;</in>
+    <in> entranceRoom5 entranceRoom6&#xd;</in>
+    <in> entranceRoom7 entranceRoom8&#xd;</in>
+    <in> entranceRoom9 entranceRoom10&#xd;</in>
+    <link> entranceRoom1 entranceRoom1@Room(0,0)&#xd;</link>
+    <link> entranceRoom2 entranceRoom2@Room(0,1)&#xd;</link>
+    <link> entranceRoom3 entranceRoom3@Room(0,2)&#xd;</link>
+    <link> entranceRoom4 entranceRoom4@Room(0,3)&#xd;</link>
+    <link> entranceRoom5 entranceRoom5@Room(0,4)&#xd;</link>
+    <link> entranceRoom6 entranceRoom6@Room(0,5)&#xd;</link>
+    <link> entranceRoom7 entranceRoom7@Room(0,6)&#xd;</link>
+    <link> entranceRoom8 entranceRoom8@Room(0,7)&#xd;</link>
+    <link> entranceRoom9 entranceRoom9@Room(0,8)&#xd;</link>
+    <link> entranceRoom10 entranceRoom10@Room(0,9)&#xd;</link>
+    <in> entranceRoomDoor1 entranceRoomDoor2&#xd;</in>
+    <link> entranceRoomDoor1 entranceRoomDoor1@Room(9,4)&#xd;</link>
+    <link> entranceRoomDoor2 entranceRoomDoor2@Room(9,5)&#xd;</link>
+    <out> exitRoomDoor1 exitRoomDoor2&#xd;</out>
+    <link> exitRoomDoor1@Room(9,4) exitRoomDoor1 &#xd;</link>
+    <link> exitRoomDoor2@Room(9,5) exitRoomDoor2 &#xd;</link>
+    <zone> room-boundary-rules { (9,0)..(9,9) }&#xd;</zone>
+    <portInTransition> entranceRoom1@Room(0,0) room-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceRoom2@Room(0,1) room-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceRoom3@Room(0,2) room-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceRoom4@Room(0,3) room-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceRoom5@Room(0,4) room-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceRoom6@Room(0,5) room-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceRoom7@Room(0,6) room-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceRoom8@Room(0,7) room-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceRoom9@Room(0,8) room-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceRoom10@Room(0,9) room-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceRoomDoor1@Room(9,4) door-entrance-rule&#xd;</portInTransition>
+    <portInTransition> entranceRoomDoor2@Room(9,5) door-entrance-rule&#xd;</portInTransition>
+  </Room>
+  <PedestrianBehaviour>
+    <comment>%%% Exit Rule %%%%&#xd;</comment>
+    <comment> An up walker hits the boundary, remove them from the grid&#xd;</comment>
+    <rule> 0 100 {(0,0)=1 and cellpos(0)=0}&#xd;</rule>
+    <comment> A down hits the boundary of the hall, remove them from the grid&#xd;</comment>
+    <rule> 0 100 {(0,0)=2 and cellpos(0)=9}&#xd;</rule>
+    <comment>%%% Rule 1 %%%%&#xd;</comment>
+    <comment> Move forward - up walkers&#xd;</comment>
+    <rule> 0 100 {(0,0)=1 and (-1,0)=0 and (-2,0)!=2}	 %the cell ahead is available and&#xd;</rule>
+    <rule> 1 100 {(0,0)=0 and (-1,0)!=2 and (1,0)=1}	 %the next cell is not a down walker&#xd;</rule>
+    <comment> Move forward - down walkers&#xd;</comment>
+    <rule> 0 100 {(0,0)=2 and (1,0)=0 and (2,0)!=1}		%the cell ahead is available and&#xd;</rule>
+    <rule> 2 100 {(0,0)=0 and (1,0)!=1 and (-1,0)=2}	%the next cell is not an up walker&#xd;</rule>
+    <comment>%%% Rule 2 %%%%&#xd;</comment>
+    <comment> There is a walker/obstacle ahead, move right if another walker isn`t going to walk there&#xd;</comment>
+    <comment> up walker&#xd;</comment>
+    <rule> 0 100 {(0,0)=1 and (-1,0)!=0		% walker or obstacle is next cell ahead&#xd;</rule>
+    <comment> walker not at border&#xd;</comment>
+    <comment> and the right side is available&#xd;</comment>
+    <comment> ensure down walker is not going for your cell&#xd;</comment>
+    <comment> ensure up walker is not going for your cell&#xd;</comment>
+    <rule> 1 100 {(0,0)=0 and (0,-1)=1		% move the up walker to the right&#xd;</rule>
+    <comment> there is an obstacle or walker in cell (-1,-1)&#xd;</comment>
+    <comment> walker not at border&#xd;</comment>
+    <comment> ensure down walker is not going for that cell&#xd;</comment>
+    <comment> ensure up walker is not going for that cell&#xd;</comment>
+    <comment> down walker&#xd;</comment>
+    <rule> 0 100 {(0,0)=2 and (1,0)!=0 		% walker or obstacle is next cell ahead&#xd;</rule>
+    <comment> walker not at border&#xd;</comment>
+    <comment> and the right side is available&#xd;</comment>
+    <comment> ensure up walker is not going for your cell&#xd;</comment>
+    <comment> ensure down walker is not going for your cell&#xd;</comment>
+    <rule> 2 100 {(0,0)=0 and (0,1)=2		% move the down walker to the right&#xd;</rule>
+    <comment> there is an obstacle or walker in cell (1,1)&#xd;</comment>
+    <comment> walker not at border&#xd;</comment>
+    <comment> ensure up walker is not going for that cell&#xd;</comment>
+    <comment> ensure down walker is not going for your cell&#xd;</comment>
+    <comment>%%% Rule 3 %%%%&#xd;</comment>
+    <comment> Walker/obstacle ahead and to the right, move to the left if another walker isn`t going to walk ther</comment>
+    <comment> up walker&#xd;</comment>
+    <rule> 0 100 {(0,0)=1 and (-1,0)!=0		% walker or obstacle is next cell ahead&#xd;</rule>
+    <comment> walker not at border&#xd;</comment>
+    <comment> walker or obstacle is also to the right&#xd;</comment>
+    <comment> the left side is available&#xd;</comment>
+    <comment> ensure down walker is not going for left cell&#xd;</comment>
+    <comment> ensure up walker is not going for left cell&#xd;</comment>
+    <rule> 1 100 {(0,0)=0 and (0,1)=1		% move the up walker to the left&#xd;</rule>
+    <comment> there is an obstacle or walker in cell (-1,1)&#xd;</comment>
+    <comment> walker not at border&#xd;</comment>
+    <comment> there is an obstacle or walker in cell (0,2) also&#xd;</comment>
+    <comment> ensure down walker is not going for that cell&#xd;</comment>
+    <comment> ensure up walker is not going for that cell&#xd;</comment>
+    <comment> down walker&#xd;</comment>
+    <rule> 0 100 {(0,0)=2 and (1,0)!=0		% walker or obstacle is next cell ahead&#xd;</rule>
+    <comment> walker not at border&#xd;</comment>
+    <comment> and the right side is an obstacle or walker&#xd;</comment>
+    <comment> the left side is available&#xd;</comment>
+    <comment> ensure up walker is not going for left cell&#xd;</comment>
+    <comment> ensure down walker is not going for left cell&#xd;</comment>
+    <rule> 2 100 {(0,0)=0 and (0,-1)=2		% move the down walker to the right&#xd;</rule>
+    <comment> there is an obstacle or walker in cell (1,-1)&#xd;</comment>
+    <comment> walker not at border&#xd;</comment>
+    <comment> there is an obstacle or walker in cell (0,-2) also&#xd;</comment>
+    <comment> ensure up walker is not going for that cell&#xd;</comment>
+    <comment> ensure down walker is not going for your cell&#xd;</comment>
+    <comment>%%% Rule 4 %%%%&#xd;</comment>
+    <comment> Avoid collision, move right if an up and down walker are vying for the same cell and it's possible&#xd;</comment>
+    <comment> up walker&#xd;</comment>
+    <rule> 0 100 {(0,0)=1 and (-1,0)=0 		% cell ahead is empty&#xd;</rule>
+    <comment> 2 cells ahead is down walker&#xd;</comment>
+    <comment> right cell is available&#xd;</comment>
+    <comment> ensure down walker is not going for right cell&#xd;</comment>
+    <comment> ensure up walker is not going for right cell&#xd;</comment>
+    <rule> 0 100 {(0,0)=1 and (-1,0)=0 		% cell ahead is empty&#xd;</rule>
+    <comment> 2 cells ahead is down walker&#xd;</comment>
+    <comment> right cell is available&#xd;</comment>
+    <comment> ensure down walker is not going for right cell&#xd;</comment>
+    <comment> walker at entrance of room or hall&#xd;</comment>
+    <rule> 1 100 {(0,0)=0 and (0,-1)=1&#xd;</rule>
+    <comment> cell (-2,-1) is a down walker&#xd;</comment>
+    <comment> cell (-1,-1) is empty&#xd;</comment>
+    <comment> ensure down walker is not going for right cell&#xd;</comment>
+    <comment> ensure up walker is not going for right cell&#xd;</comment>
+    <comment> down walker&#xd;</comment>
+    <rule> 0 100 {(0,0)=2 and (1,0)=0		% cell ahead is empty&#xd;</rule>
+    <comment> 2 cells ahead is up walker&#xd;</comment>
+    <comment> right cell is available&#xd;</comment>
+    <comment> ensure up walker is not going for right cell&#xd;</comment>
+    <comment> ensure down walker is not going for right cell&#xd;</comment>
+    <rule> 0 100 {(0,0)=2 and (1,0)=0		% cell ahead is empty&#xd;</rule>
+    <comment> 2 cells ahead is up walker&#xd;</comment>
+    <comment> right cell is available&#xd;</comment>
+    <comment> ensure up walker is not going for right cell&#xd;</comment>
+    <comment> walker at the entrance of room or hall&#xd;</comment>
+    <rule> 2 100 {(0,0)=0 and (0,1)=2&#xd;</rule>
+    <comment> cell (2,1) is an up walker&#xd;</comment>
+    <comment> cell (1,1) is empty&#xd;</comment>
+    <comment> ensure up walker is not going for right cell&#xd;</comment>
+    <comment> ensure down walker is not going for right cell				&#xd;</comment>
+    <comment>%%% Rule 5 %%%%&#xd;</comment>
+    <comment> Walker/obstacle ahead to the right and to the left, move backward if another walker isn`t going to </comment>
+    <comment> up walker&#xd;</comment>
+    <rule> 0 100 {(0,0)=1 and (-1,0)!=0		% walker or obstacle is next cell ahead&#xd;</rule>
+    <comment> walker not at border&#xd;</comment>
+    <comment> walker or obstacle is also to the right&#xd;</comment>
+    <comment> walker or obstacle is also to the left&#xd;</comment>
+    <comment> cell behind is available&#xd;</comment>
+    <comment> ensure up walker is not going for backward cell &#xd;</comment>
+    <comment> ensure walker from (1,1) is not going for backward cell&#xd;</comment>
+    <comment> ensure walker from (1,-1) is not going for backward cell&#xd;</comment>
+    <rule> 1 100 {(0,0)=0 and (-1,0)=1		% move the up walker backwards&#xd;</rule>
+    <comment> walker not at border&#xd;</comment>
+    <comment> there is an obstacle or walker in cell (-1,1)&#xd;</comment>
+    <comment> there is an obstacle or walker in cell (-1,-1)&#xd;</comment>
+    <comment> there is an obstacle or walker in cell (-2,0)&#xd;</comment>
+    <comment> ensure up walker is not going for that cell&#xd;</comment>
+    <comment> ensure walker from (0,-1) is not going for that cell&#xd;</comment>
+    <comment> ensure walker from (0,1) is not going for that cell&#xd;</comment>
+    <comment> down walker&#xd;</comment>
+    <rule> 0 100 {(0,0)=2 and (1,0)!=0		% walker or obstacle is next cell ahead&#xd;</rule>
+    <comment> walker not at border&#xd;</comment>
+    <comment> walker or obstacle is also to the right&#xd;</comment>
+    <comment> walker or obstacle is also to the left&#xd;</comment>
+    <comment> cell behind is available&#xd;</comment>
+    <comment> ensure down walker is not going for backward cell &#xd;</comment>
+    <comment> ensure walker from (-1,1) is not going for backward cell&#xd;</comment>
+    <comment> ensure walker from (-1,-1) is not going for backward cell&#xd;</comment>
+    <rule> 2 100 {(0,0)=0 and (1,0)=2		% move the down walker backwards&#xd;</rule>
+    <comment> walker not at border&#xd;</comment>
+    <comment> there is an obstacle or walker in cell (1,1)&#xd;</comment>
+    <comment> there is an obstacle or walker in cell (1,-1)&#xd;</comment>
+    <comment> there is an obstacle or walker in cell (2,0)&#xd;</comment>
+    <comment> ensure down walker is not going for that cell&#xd;</comment>
+    <comment> ensure walker from (0,-1) is not going for that cell&#xd;</comment>
+    <comment> ensure walker from (0,1) is not going for that cell&#xd;</comment>
+    <comment>%%% Rule 6 %%%%&#xd;</comment>
+    <comment> Default - don't move&#xd;</comment>
+    <rule> {(0,0)} 100 {t}&#xd;</rule>
+  </PedestrianBehaviour>
+  <hall-entrance-rule>
+    <comment> Assign a value of 1 to the pedestrians who are entering the hall and walking upwards&#xd;</comment>
+    <rule> 1 100 {portvalue(ThisPort)&gt;0 and (-1,0)!=2 and ( ((0,0)=0 and cellpos(0)=9) or ((0,0)=2 and cellpos</rule>
+    <comment> default - stay the same&#xd;</comment>
+    <rule> {(0,0)} 100 {t}&#xd;</rule>
+  </hall-entrance-rule>
+  <room-entrance-rule>
+    <comment>Assign a value of 2 to the pedestrians who are entering the room and walking downwards&#xd;</comment>
+    <rule> 2 100 {portvalue(ThisPort)&gt;0 and (1,0)!=1 and ( ((0,0)=0 and cellpos(0)=0) or ((0,0)=1 and cellpos(</rule>
+    <comment> default - stay the same&#xd;</comment>
+    <rule> {(0,0)} 100 {t}&#xd;</rule>
+  </room-entrance-rule>
+  <hall-boundary-rules>
+    <comment>%%% Rule 1 %%%%&#xd;</comment>
+    <comment> up walker at the door, exit the hall and send message to devs door model&#xd;</comment>
+    <rule> {0 + send(exitHallDoor1,1)} 100 {(0,0)=1 and cellpos(1)=2}&#xd;</rule>
+    <rule> {0 + send(exitHallDoor2,1)} 100 {(0,0)=1 and cellpos(1)=3}&#xd;</rule>
+    <comment>%%% Rule 2 %%%%&#xd;</comment>
+    <comment> have the up walkers enter the boundary&#xd;</comment>
+    <rule> 1 100 {(0,0)=0 and (1,0)=1}&#xd;</rule>
+    <comment>%%% Rule 3 %%%%&#xd;</comment>
+    <comment> up walker at the boundary on the right side of door, walk left		&#xd;</comment>
+    <rule> 0 100 {(0,0)=1					% walker is at boundary&#xd;</rule>
+    <comment> on the right side of door&#xd;</comment>
+    <comment> and the left side is available&#xd;</comment>
+    <comment> ensure up walker is not going for your cell&#xd;</comment>
+    <rule> 1 100 {(0,0)=0 and (0,1)=1		% move the up walker to the left&#xd;</rule>
+    <comment> at the right side of the door&#xd;</comment>
+    <comment> ensure down walker is not going for your cell&#xd;</comment>
+    <comment>%%% Rule 4 %%%%&#xd;</comment>
+    <comment> up walker at the boundary on the left side of door, walk right		&#xd;</comment>
+    <rule> 0 100 {(0,0)=1			 		% walker is at boundary&#xd;</rule>
+    <comment> on the left side of door&#xd;</comment>
+    <comment> and the right side is available&#xd;</comment>
+    <comment> ensure up walker is not going for your cell&#xd;</comment>
+    <rule> 1 100 {(0,0)=0 and (0,-1)=1 		% move the up walker to the right&#xd;</rule>
+    <comment> at the left side of the door&#xd;</comment>
+    <comment> ensure up walker is not going for your cell&#xd;</comment>
+    <comment>%%% Rule 5 %%%%&#xd;</comment>
+    <comment> the down walker entered the hall, walk down&#xd;</comment>
+    <rule> 0 100 {(0,0)=2 and (1,0)=0}&#xd;</rule>
+    <comment> default&#xd;</comment>
+    <rule> {(0,0)} 100 {t}&#xd;</rule>
+  </hall-boundary-rules>
+  <room-boundary-rules>
+    <comment>%%% Rule 1 %%%%&#xd;</comment>
+    <comment> down walker at the door, exit the room and send message to devs door model&#xd;</comment>
+    <rule> {0 + send(exitRoomDoor1,2)} 100 {(0,0)=2 and cellpos(1)=4}&#xd;</rule>
+    <rule> {0 + send(exitRoomDoor2,2)} 100 {(0,0)=2 and cellpos(1)=5}&#xd;</rule>
+    <comment>%%% Rule 2 %%%%&#xd;</comment>
+    <comment> have the down walkers enter the boundary&#xd;</comment>
+    <rule> 2 100 {(0,0)=0 and (-1,0)=2}&#xd;</rule>
+    <comment>%%% Rule 3 %%%%&#xd;</comment>
+    <comment> at the boundary on right side of door, walk left		&#xd;</comment>
+    <rule> 0 100 {(0,0)=2					% walker is at boundary&#xd;</rule>
+    <comment> on the right side of door&#xd;</comment>
+    <comment> and the left side is available&#xd;</comment>
+    <comment> ensure down walker is not going for your cell&#xd;</comment>
+    <rule> 2 100 {(0,0)=0 and (0,-1)=2 		% move the down walker to the left&#xd;</rule>
+    <comment> at the right side of door&#xd;</comment>
+    <comment> ensure down walker is not going for your cell&#xd;</comment>
+    <comment>%%% Rule 4 %%%%&#xd;</comment>
+    <comment> at the boundary on left side of door, walk right		&#xd;</comment>
+    <rule> 0 100 {(0,0)=2 			 		% walker is at boundary&#xd;</rule>
+    <comment> on the left side of door&#xd;</comment>
+    <comment> and the right side is available&#xd;</comment>
+    <comment> ensure down walker is not going for your cell&#xd;</comment>
+    <rule> 2 100 {(0,0)=0 and (0,1)=2		% move the down walker to the left&#xd;</rule>
+    <comment> at the left side of door&#xd;</comment>
+    <comment> ensure down walker is not going for your cell&#xd;</comment>
+    <comment>%%% Rule 5 %%%%&#xd;</comment>
+    <comment> the up walker entered the room, walk up&#xd;</comment>
+    <rule> 0 100 {(0,0)=1 and (-1,0)=0}  % after they enter the room&#xd;</rule>
+    <comment> default&#xd;</comment>
+    <rule> {(0,0)} 100 {t}&#xd;</rule>
+  </room-boundary-rules>
+  <door-entrance-rule>
+    <comment> The pedestrian is ready to enter the room or hall through the door&#xd;</comment>
+    <rule> {portvalue(ThisPort)} 50 {t}&#xd;</rule>
+    <comment>----------Door Controller parameters-----------&#xd;</comment>
+  </door-entrance-rule>
+  <door1>
+    <doorProcessingTime> 00:00:00:50&#xd;</doorProcessingTime>
+  </door1>
+  <door2>
+    <doorProcessingTime> 00:00:00:50&#xd;</doorProcessingTime>
+    <comment>----------Room Generator parameters-----------&#xd;</comment>
+  </door2>
+  <pedestrianRoom1>
+    <distribution> poisson&#xd;</distribution>
+    <mean> 2.1&#xd;</mean>
+    <variance> 1&#xd;</variance>
+    <deviation> 1&#xd;</deviation>
+  </pedestrianRoom1>
+  <pedestrianRoom2>
+    <distribution> poisson&#xd;</distribution>
+    <mean> 1.6&#xd;</mean>
+    <variance> 1.2&#xd;</variance>
+    <deviation> 1.2&#xd;</deviation>
+  </pedestrianRoom2>
+  <pedestrianRoom3>
+    <distribution> poisson&#xd;</distribution>
+    <mean> 1.8&#xd;</mean>
+    <variance> 1.1&#xd;</variance>
+    <deviation> 1.1&#xd;</deviation>
+  </pedestrianRoom3>
+  <pedestrianRoom4>
+    <distribution> poisson&#xd;</distribution>
+    <mean> 2.6&#xd;</mean>
+    <variance> 1&#xd;</variance>
+    <deviation

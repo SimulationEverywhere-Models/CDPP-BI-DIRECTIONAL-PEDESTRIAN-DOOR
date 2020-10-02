@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://www.example.org/DEVSModeler" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
+  <CoupledModelType xmi:id="_0zvk0CdFEeGKIdL49w_TNw" modelName="top" defined="true" sourceFileRelativePath="BiDirPedDoor.ma">
+    <coupledModels xmi:type="CoupledModelInstance" xmi:id="_0zvk0SdFEeGKIdL49w_TNw" instanceName="Room">
+      <modelType xmi:type="CoupledModelType" xmi:id="_0zvk0idFEeGKIdL49w_TNw" modelName="Room"/>
+    </coupledModels>
+    <coupledModels xmi:type="CoupledModelInstance" xmi:id="_0zvk0ydFEeGKIdL49w_TNw" instanceName="Hall">
+      <modelType xmi:type="CoupledModelType" xmi:id="_0zvk1CdFEeGKIdL49w_TNw" modelName="Hall"/>
+    </coupledModels>
+  </CoupledModelType>
+  <notation:Diagram xmi:id="_0zvk1SdFEeGKIdL49w_TNw" type="DEVS" element="_0zvk0CdFEeGKIdL49w_TNw" name="BiDirPedDoor.madesigner" measurementUnit="Pixel">
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_0zvk1idFEeGKIdL49w_TNw"/>
+  </notation:Diagram>
+</xmi:XMI>
